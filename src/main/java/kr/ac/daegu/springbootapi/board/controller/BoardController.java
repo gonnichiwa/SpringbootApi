@@ -23,6 +23,7 @@ public class BoardController {
     // DB의 board 테이블 데이터 모두 가져와서 json return 해보기.
     @GetMapping(value = "/")
     public List<BoardDTO> getBoardList(){
-        return boardService.getBoardList();
+        List<BoardDTO> list = boardService.getBoardList();
+        return list;
     }
 }
