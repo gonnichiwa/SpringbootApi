@@ -23,8 +23,6 @@ public class BoardController {
         return new ApiResponse(true, list);
     }
 
-    /* mission */
-    // POST /board 해서 board 데이터 Insert 해보기
     @PostMapping(value = "/")
     public ApiResponse<BoardDTO> postBoard(@RequestBody BoardDTO boardDTO) throws Exception {
         BoardDTO dto = boardService.postBoard(boardDTO);
@@ -37,4 +35,11 @@ public class BoardController {
         log.debug("id: " + id);
         return boardService.putBoard(id, boardDTO);
     }
+
+    /* mission */
+    // 글 읽기
+    // 요청URL은 GET http://localhost:8080/board/{id}
+    
+    // 글 삭제
+    // 요청URL은 DELETE http://localhost:8080/board/{id}
 }
