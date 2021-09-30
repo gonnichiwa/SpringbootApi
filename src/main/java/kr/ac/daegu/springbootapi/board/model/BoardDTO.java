@@ -23,4 +23,22 @@ public class BoardDTO {
     private int replyRootId;
     private int depth;
     private int orderNum;
+
+    @Override
+    public String toString() {
+        return "BoardDTO{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                ", writeDate=" + writeDate +
+                ", writeTime=" + writeTime +
+                ", readCount=" + readCount +
+                ", commentCount=" + commentCount +
+                ", password='" + password + '\'' +
+                ", replyRootId=" + replyRootId +
+                ", depth=" + depth +
+                ", orderNum=" + orderNum +
+                '}';
+    }
 }

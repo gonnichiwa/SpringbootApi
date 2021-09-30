@@ -1,5 +1,6 @@
 package kr.ac.daegu.springbootapi.test.controller;
 
+import kr.ac.daegu.springbootapi.common.ApiResponse;
 import kr.ac.daegu.springbootapi.test.model.TestDTO;
 import kr.ac.daegu.springbootapi.test.service.TestService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class TestController {
     public final TestService testService;
 
     @GetMapping(value = "/")
-    public List<TestDTO> rootTest() throws Exception {
+    public ApiResponse<TestDTO> rootTest() throws Exception {
         log.trace("logTest~~~~~~~~~~~~~~~~~~~~~~~~~~~~"); // 로그의 5단계 trace(일반적으로 남기는 이벤트 기록) -> debug(디버깅용) -> info(알림) -> warn(경고) -> error(에러)
         log.debug("logTest~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         log.info("logTest~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -27,7 +28,7 @@ public class TestController {
         // 간단한 list 생성
         List<TestDTO> testList = testService.getTestList();
 
-        return testList;
+        return new ApiResponse(true, testList);
     }
 
     @PostMapping(value = "/")
