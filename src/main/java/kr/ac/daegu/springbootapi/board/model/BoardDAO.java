@@ -12,4 +12,7 @@ public interface BoardDAO {
 
     int postBoard(BoardDTO boardDTO);
 
+    BoardDTO getBoardById(int id);
+
+    int updateIsDelBoardById(int id);
 }

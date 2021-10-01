@@ -39,7 +39,17 @@ public class BoardController {
     /* mission */
     // 글 읽기
     // 요청URL은 GET http://localhost:8080/board/{id}
+    @GetMapping(value = "/{id}")
+    public ApiResponse<BoardDTO> getBoardById(@PathVariable int id) throws Exception {
+        return boardService.getBoardById(id);
+    }
     
     // 글 삭제
+    // isDeleted : Y로 업데이트 시킴.
     // 요청URL은 DELETE http://localhost:8080/board/{id}
+    @DeleteMapping(value = "/{id}")
+    public ApiResponse<BoardDTO> updateIsDelBoardById(@PathVariable int id) throws Exception {
+        return boardService.updateIsDelBoardById(id);
+    }
+
 }
