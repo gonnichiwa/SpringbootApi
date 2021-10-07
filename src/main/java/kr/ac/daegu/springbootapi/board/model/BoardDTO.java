@@ -1,13 +1,15 @@
 package kr.ac.daegu.springbootapi.board.model;
 
-import lombok.AllArgsConstructor;
+import kr.ac.daegu.springbootapi.comment.model.CommentDTO;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class BoardDTO {
@@ -24,6 +26,9 @@ public class BoardDTO {
     private int depth;
     private int orderNum;
 
+    private List<CommentDTO> comments = null;
+
+
     @Override
     public String toString() {
         return "BoardDTO{" +
@@ -39,6 +44,7 @@ public class BoardDTO {
                 ", replyRootId=" + replyRootId +
                 ", depth=" + depth +
                 ", orderNum=" + orderNum +
+                ", comments=" + comments +
                 '}';
     }
 }
