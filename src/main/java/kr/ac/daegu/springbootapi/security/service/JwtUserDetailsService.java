@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
-@RequiredArgsConstructor
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
