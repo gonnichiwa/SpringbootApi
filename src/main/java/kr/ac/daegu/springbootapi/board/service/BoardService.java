@@ -54,9 +54,16 @@ public class BoardService {
 
     public ApiResponse<BoardDTO> getBoardById(int boardId) {
         BoardDTO data = boardDAO.getBoardById(boardId);
+        if(isDeletedData(data)){
+            return new ApiResponse(false, "boardId " + boardId + " is already deleted");
+        }
         List<CommentDTO> commentsById = commentDAO.getCommentsByBoardId(boardId);
         data.setComments(commentsById);
         return new ApiResponse(true, data);
+    }
+
+    private boolean isDeletedData(BoardDTO data) {
+        return data.getIsDel().equals("Y");
     }
 
     // Board테이블의 isDel 컬럼의 데이터를 'Y' 로 업데이트
