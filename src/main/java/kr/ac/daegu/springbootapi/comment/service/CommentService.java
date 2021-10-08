@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 @Slf4j
@@ -28,5 +30,11 @@ public class CommentService {
             String successMessage = "success to insert comment data id " + commentDTO.getId();
             return new ApiResponse<>(true, successMessage, commentDTO);
         }
+    }
+
+    public ApiResponse<CommentDTO> getCommentsByBoardId(int boardId) {
+        // 요청받은 boardId가 가진 comment테이블의 데이터 목록
+        List<CommentDTO> comments = commentDAO.getCommentsByBoardId(boardId);
+        return new ApiResponse(true, "success to get comments by boardId" + boardId, comments);
     }
 }

@@ -7,10 +7,7 @@ import kr.ac.daegu.springbootapi.comment.service.CommentService;
 import kr.ac.daegu.springbootapi.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +20,11 @@ public class CommentController {
     @PostMapping(value = "/")
     public ApiResponse<CommentDTO> postComment(@RequestBody CommentDTO commentDTO) throws Exception {
         return commentService.postComment(commentDTO);
+    }
+
+    @GetMapping(value = "/{boardId}")
+    public ApiResponse<CommentDTO> getCommentsByBoardId(@PathVariable int boardId) throws Exception {
+        return commentService.getCommentsByBoardId(boardId);
     }
 
 }

@@ -41,11 +41,6 @@ public class BoardService {
     }
 
     public String putBoard(int id, BoardDTO boardDTO) throws Exception {
-        // author,
-        // content,
-        // subject,
-        // content
-        // writeDate, writeTime 업데이트
         boardDTO.setId(id);
         boardDTO.setWriteDate(LocalDate.now());
         boardDTO.setWriteTime(LocalTime.now());
@@ -57,9 +52,9 @@ public class BoardService {
         throw new Exception("failed to update " + id + " content");
     }
 
-    public ApiResponse<BoardDTO> getBoardById(int id) {
-        BoardDTO data = boardDAO.getBoardById(id);
-        List<CommentDTO> commentsById = commentDAO.getCommentsById(id);
+    public ApiResponse<BoardDTO> getBoardById(int boardId) {
+        BoardDTO data = boardDAO.getBoardById(boardId);
+        List<CommentDTO> commentsById = commentDAO.getCommentsByBoardId(boardId);
         data.setComments(commentsById);
         return new ApiResponse(true, data);
     }

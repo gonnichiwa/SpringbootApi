@@ -9,5 +9,5 @@ public interface CommentDAO {
 
     int postComment(CommentDTO commentDTO);
 
-    List<CommentDTO> getCommentsById(int id);
+    List<CommentDTO> getCommentsByBoardId(int boardId);
 }
