@@ -40,16 +40,30 @@ public class BoardService {
         }
     }
 
-    public String putBoard(int id, BoardDTO boardDTO) throws Exception {
+    public ApiResponse<?> putBoard(int id, BoardDTO boardDTO) throws Exception {
+        // board의 비번 검사
+        String boardPassword = boardDAO.getBoardById(id).getPassword();
+        if(isBoardPasswordMisMatch(boardDTO, boardPassword)){
+            return new ApiResponse<>(false, "board password is not match");
+        }
+
         boardDTO.setId(id);
         boardDTO.setWriteDate(LocalDate.now());
         boardDTO.setWriteTime(LocalTime.now());
         int result = boardDAO.putBoard(boardDTO);
 
         if(result > 0){
-            return result + " rows updated";
+            return new ApiResponse<>(true, result + " rows updated");
         }
         throw new Exception("failed to update " + id + " content");
+    }
+
+    private boolean isBoardPasswordMisMatch(BoardDTO boardDTO, String boardPassword) {
+        log.debug("boardPassword="+boardPassword);
+        log.debug("requestedPassword="+boardDTO.getPassword());
+        boolean isMisMatch = !boardDTO.getPassword().equals(boardPassword);
+        log.debug("isMisMatch=" + isMisMatch);
+        return isMisMatch;
     }
 
     public ApiResponse<BoardDTO> getBoardById(int boardId) {

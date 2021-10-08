@@ -30,7 +30,7 @@ public class BoardController {
     }
 
     @PutMapping(value = "/{id}")
-    public String putBoard(@PathVariable int id,
+    public ApiResponse<?> putBoard(@PathVariable int id,
                            @RequestBody BoardDTO boardDTO) throws Exception {
         log.debug("id: " + id);
         return boardService.putBoard(id, boardDTO);
