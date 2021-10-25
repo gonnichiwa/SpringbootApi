@@ -37,4 +37,11 @@ public class BoardJpaController {
         return new ApiResponse(true, data);
     }
 
+    @PutMapping(value = "/{id}")
+    public ApiResponse<BoardDTO> putBoard(@PathVariable int id,
+                                          @RequestBody BoardDTO boardDTO){
+        Board data = boardJpaService.putBoard(id, boardDTO);
+        return new ApiResponse(true, data);
+    }
+
 }

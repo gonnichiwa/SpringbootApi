@@ -3,13 +3,12 @@ package kr.ac.daegu.springbootapi.boardjpa.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "board")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
