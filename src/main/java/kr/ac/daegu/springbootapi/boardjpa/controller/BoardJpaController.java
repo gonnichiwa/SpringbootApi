@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +23,12 @@ public class BoardJpaController {
     public ApiResponse<BoardDTO> getBoardList(){
         List<Board> list = boardJpaService.getBoardList();
         return new ApiResponse(true, list);
+    }
+
+    @GetMapping(value = "/{id}") // PathVariable
+    public ApiResponse<BoardDTO> getBoardById(@PathVariable Integer id){
+        Board data = boardJpaService.getBoardById(id);
+        return new ApiResponse(true, data);
     }
 
 }

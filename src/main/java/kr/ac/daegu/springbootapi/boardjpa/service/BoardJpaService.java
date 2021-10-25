@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -15,10 +16,12 @@ import java.util.List;
 public class BoardJpaService {
 
     public final BoardRepository boardRepository;
-    public final CommentDAO commentDAO;
 
     public List<Board> getBoardList() {
         return boardRepository.findAll();
     }
 
+    public Board getBoardById(Integer id) {
+        return boardRepository.findBoardById(id);
+    }
 }
