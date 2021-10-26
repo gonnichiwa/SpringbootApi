@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface BoardRepository extends CrudRepository<Board, Integer> {
     List<Board> findAll();
-    Board findBoardById(Integer id);
+//    Board findBoardById(Integer id);
     Optional<Board> findBoardById(int id);
 }
