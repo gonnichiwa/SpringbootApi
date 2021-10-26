@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface BoardRepository extends CrudRepository<Board, Integer> {
     List<Board> findAll();
+    List<Board> findBoardsByIsDel(String isDel);
 //    Board findBoardById(Integer id);
     Optional<Board> findBoardById(int id);
 }

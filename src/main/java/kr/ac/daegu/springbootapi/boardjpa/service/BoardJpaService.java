@@ -3,7 +3,6 @@ package kr.ac.daegu.springbootapi.boardjpa.service;
 import kr.ac.daegu.springbootapi.board.model.BoardDTO;
 import kr.ac.daegu.springbootapi.boardjpa.model.Board;
 import kr.ac.daegu.springbootapi.boardjpa.model.BoardRepository;
-import kr.ac.daegu.springbootapi.comment.model.CommentDAO;
 import kr.ac.daegu.springbootapi.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +22,7 @@ public class BoardJpaService {
 
     public List<Board> getBoardList() {
         // 숙제 2 : jpa queryMethod를 수정하여 isDel이 "N"인 데이터row들만 나오도록 수정
-        return boardRepository.findAll();
+        return boardRepository.findBoardsByIsDel("N");
     }
 
     public Board getBoardById(Integer id) {
