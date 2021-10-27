@@ -22,6 +22,7 @@ public class CommentJpaService {
 
     @Transactional
     public CommentDTO postComment(CommentDTO commentDTO) throws Exception {
+        /* DBMS Comment 테이블에 설정되어 있는 제약조건 삭제 후 테스트 해 볼것. */
 //        댓글달기 API (POST /commentJpa/) 호출 하면
 //        Comment 테이블에 데이터 INSERT
         Comment c = Comment.builder()
