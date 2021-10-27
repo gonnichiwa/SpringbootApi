@@ -61,4 +61,7 @@ public class BoardJpaController {
         return boardJpaService.updateIsDelBoardById(id, boardPassword);
     }
 
+    // mission 답글을 담당하는 기능 구현.
+
+
 }
