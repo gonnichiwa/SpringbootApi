@@ -22,15 +22,11 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
             "                WHERE  b.replyRootId = ?1" +
             "                AND b.orderNum > ?3" +
             "                AND b.depth <= ?2")
-    default Integer getMinOrderNum(int replyRootId, int depth, int orderNum) {
-        return 0; // 인터페이스 결과가 null 일경우 default value 지정. (JDK 8 기능)
-    }
+    Integer getMinOrderNum(int replyRootId, int depth, int orderNum);
 
     @Query("SELECT MAX(orderNum) + 1 FROM Board" +
             " WHERE replyRootId = ?1")
-    default Integer getReplyOrderNum(int replyRootId) {
-        return 0; // 인터페이스 결과가 null 일경우 default value 지정. (JDK 8 기능)
-    };
+    Integer getReplyOrderNum(int replyRootId);
 
     @Query("UPDATE Board SET orderNum = orderNum + 1" +
             "                WHERE replyRootId = ?1  AND orderNum >= ?2")

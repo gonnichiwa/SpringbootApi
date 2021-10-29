@@ -104,6 +104,9 @@ public class BoardJpaService {
         int orderNum = dto.getOrderNum();
 
         Integer minOrderNum = boardRepository.getMinOrderNum(replyRootId, depth, orderNum);
+        if(minOrderNum == null) {
+            minOrderNum = 0;
+        }
         log.debug("minOrderNum==" + minOrderNum);
         // minOrderNum이 0인 경우 : root글에 달린 답글들 사이에 추가되는 답글인지? 바로추가답글 : 사이답글임.
         if(minOrderNum == 0) {
