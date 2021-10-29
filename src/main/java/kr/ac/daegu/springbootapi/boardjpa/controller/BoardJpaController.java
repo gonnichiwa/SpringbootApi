@@ -61,7 +61,11 @@ public class BoardJpaController {
         return boardJpaService.updateIsDelBoardById(id, boardPassword);
     }
 
-    // mission 답글을 담당하는 기능 구현.
+    // mission 답글 쓰기를 담당하는 기능 구현.
+    @PostMapping(value = "/reply")
+    public ApiResponse<BoardDTO> postBoardReplyContent(@RequestBody BoardDTO boardDTO){
+        return boardJpaService.postReply(boardDTO);
+    }
 
 
 }
