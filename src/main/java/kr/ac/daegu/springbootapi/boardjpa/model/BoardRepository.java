@@ -15,6 +15,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
     Page<Board> findBoardsByIsDel(String isDel, Pageable pageable);
     Optional<Board> findBoardById(int id);
 
+    // JPQL != SQL
     @Query("Select b FROM Board b where b.id = ?1") // JPA를 이용하여 쿼리를 날린다.
     Board selectBoard(int id);
 
