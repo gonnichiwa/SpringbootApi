@@ -100,8 +100,8 @@ public class BoardJpaService {
 
         /* depth와 orderNum을 정하는 로직 START */
         int replyRootId = dto.getReplyRootId();
-        int depth = b.getDepth();
-        int orderNum = b.getOrderNum();
+        int depth = dto.getDepth();
+        int orderNum = dto.getOrderNum();
 
         Integer minOrderNum = boardRepository.getMinOrderNum(replyRootId, depth, orderNum);
         log.debug("minOrderNum==" + minOrderNum);
