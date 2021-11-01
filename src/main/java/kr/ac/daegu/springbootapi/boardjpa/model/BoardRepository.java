@@ -16,7 +16,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
     Optional<Board> findBoardById(int id);
 
     // JPQL != SQL
-    @Query("Select b FROM Board b where b.id = ?1") // JPA를 이용하여 쿼리를 날린다.
+    @Query("Select b FROM Board b where b.id = ?1") // JPA를 이용하여 JPQL만든 후 쿼리를 날린다.
     Board selectBoard(int id);
 
     @Query("SELECT MIN(b.orderNum) FROM Board b" +
@@ -32,5 +32,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
     @Query("UPDATE Board SET orderNum = orderNum + 1" +
             "                WHERE replyRootId = ?1  AND orderNum >= ?2")
     void updateOrderNum(int replyRootId, int minOrderNum);
-
+    // 최고 Id값을 가진 Board 엔터티를 가져옴.
+    Board findTopByOrderByIdDesc();
 }
