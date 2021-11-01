@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface BoardRepository extends JpaRepository<Board, Integer> {
     List<Board> findAll();
     Page<Board> findBoardsByIsDel(String isDel, Pageable pageable);
+    Page<Board> findBoardsByIsDelOrderByReplyRootIdDescOrderNumAsc(String isDel, Pageable pageable);
     Optional<Board> findBoardById(int id);
 
     // JPQL != SQL
